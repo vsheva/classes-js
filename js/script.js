@@ -37,10 +37,6 @@
 // calculator.show();
 
 
-
-
-
-
 // ---2 задание---
 
 //
@@ -62,6 +58,9 @@
 
 //  --- 3 задание ---
 
+let total = document.querySelector(".result")
+let total1 = document.querySelector(".result1")
+
 const cityArr = {
     rus: ['Москва', 'Санк-Петербург', 'Новосибирск', 'Екатеринбург', 'Нижний Новгород', 'Казань', 'Челябинск'],
     uk: ['Киев', 'Харьков', 'Одесса', 'Днепр', 'Донецк', 'Запорожье', 'Львов'],
@@ -72,20 +71,27 @@ const cityArr = {
 let selectedCountry = document.querySelector("#country");
 let selectedCity = document.querySelector("#city");
 
-selectedCountry.addEventListener('change',function(){
-    console.log();
-    let cities =cityArr[this.value];
+
+let result
+
+selectedCountry.addEventListener('change', function () {
+
+    let cities = cityArr[this.value];
     selectedCity.length = 0;
 
+    for (let i = 0; i < cities.length; i++) {
+        selectedCity.add(new Option(cities[i]));
 
-
-    for(let i = 0; i < cities.length; i++) {
-
-      selectedCity.add(new Option(cities[i]));
-
+        total.textContent = selectedCountry.options[selectedCountry.selectedIndex].text
+       total1.textContent = selectedCity.options[selectedCity.selectedIndex].text
     }
 })
 
+selectedCity.addEventListener('click', function () {
+
+    total1.textContent = selectedCity.value
+
+})
 
 
 
